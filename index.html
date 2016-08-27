@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h1>hhh</h1>
+	<input type="button" value="获取数据" id="btn">
+	<input type="button" value="传输数据" id="btn1">
+	<p id="name"></p>
+	<p id="age"></p>
+
+	
+	<script>
+	// $("#btn").click(function(){
+	// 	$.get("/getdata",function(data){
+	// 		console.log(data.name)
+	// 	})
+	// })
+	// $("#btn1").click(function(){
+	// 	$.post("/postdata",{name:"yan"},function(data){
+	// 		console.log('正确')
+	// 	})
+	// })
+
+	var btn = document.getElementById('btn')
+	btn.onclick=function(){
+		var xhr=new XMLHttpRequest();
+		xhr.open("get","/get",true);
+		xhr.send();
+		xhr.onreadystatechange=function(){
+			if(xhr.readyState == 4 && xhr.status == 200){
+				console.log(xhr.responseText)
+			}
+		}
+	}
+	</script>
+</body>
+</html>
