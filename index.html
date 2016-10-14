@@ -2,39 +2,110 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0 user-scalable=0">
+	<title>简历</title>
+	<link rel="stylesheet" type="text/css" href="css/swiper-3.3.1.min.css">
+	<link rel="stylesheet" type="text/css" href="css/animate.min.css">
+	<script src="js/fontsize.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<link rel="stylesheet" type="text/css" href="css/animation.css">
 </head>
 <body>
-	<h1>hhh</h1>
-	<input type="button" value="获取数据" id="btn">
-	<input type="button" value="传输数据" id="btn1">
-	<p id="name"></p>
-	<p id="age"></p>
+	<span class="music-btn music-on animated music-animate infinite"></span>
 
-	
+	<span class="arrow animated arrow-animate infinite"><img width="100%" src="images/arrow.png" alt=""></span>
+
+	<div class="swiper-container">
+
+	    <div class="swiper-wrapper">
+	        <div class="swiper-slide page1">
+						<p class="page1-1 ani" swiper-animate-effect="swing" swiper-animate-duration="1.2s" swiper-animate-delay="0.4s">给我一个机会   还你一份惊喜</p>
+	        </div>
+
+	        <div class="swiper-slide page2">
+	        	<img class="ani" swiper-animate-effect="rollIn" swiper-animate-duration="0.5s" swiper-animate-delay="0.2s" src="images/11.png" alt="">
+						<p class="ani" swiper-animate-effect="bounceInDown" swiper-animate-duration="1s" swiper-animate-delay="1s">个人信息</p>
+							<span class="ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration="1s" swiper-animate-delay="0.5s">姓名：严静文</span>
+							<span class="ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="1s" swiper-animate-delay="0.6s">籍贯：山东济宁</span>
+							<span class="ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration="1s" swiper-animate-delay="0.5s">电话：18330389297</span>
+							<span class="ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="1s" swiper-animate-delay="0.6s">邮箱：2079315083@qq.com</span>
+	        </div>
+
+	        <div class="swiper-slide page3">
+	        	<p class="page3-1 ani" swiper-animate-effect="flip" swiper-animate-duration="1s" swiper-animate-delay="0.2s">专业技能</p>
+							<p class="page3-2 ani" swiper-animate-effect="rollIn" swiper-animate-duration="0.5s" swiper-animate-delay="1.4s">Git</p>
+							<p class="page3-3 ani" swiper-animate-effect="rollIn" swiper-animate-duration="0.5s" swiper-animate-delay="2.7s">react</p>
+							<p class="page3-4 ani" swiper-animate-effect="rollIn" swiper-animate-duration="0.5s" swiper-animate-delay="1.7s">linux</p>
+							<p class="page3-5 ani" swiper-animate-effect="rollIn" swiper-animate-duration="0.5s" swiper-animate-delay="2.3s">Es6</p>
+							<p class="page3-6 ani" swiper-animate-effect="rollIn" swiper-animate-duration="0.5s" swiper-animate-delay="2s">express</p>
+				 </div>
+
+	        <div class="swiper-slide page4">
+	        	<p class="p1 ani" swiper-animate-effect="rotateIn" swiper-animate-duration="0.6s" swiper-animate-delay="0.2s">工作经历</p>
+	        	<p class="p2 ani" swiper-animate-effect="bounceInUp" swiper-animate-duration="1s" swiper-animate-delay="1s">2016.5.20--2016.10.20</p>
+	        	<p class="p3 ani" swiper-animate-effect="bounceInUp" swiper-animate-duration="1s" swiper-animate-delay="1.5s">xxxxxx</p>
+						<p class="p4 ani" swiper-animate-effect="bounceInUp" swiper-animate-duration="1s" swiper-animate-delay="2s">前端实习工程师</p>
+	        </div>
+
+	        <div class="swiper-slide page5">
+	        	<img class="img1 ani" swiper-animate-effect="zoomIn" swiper-animate-duration="0.6s" swiper-animate-delay="0.2s" src="images/01.png" alt="">
+						<span class="ani" swiper-animate-effect="rotateIn" swiper-animate-duration="0.6s" swiper-animate-delay="0.8s">扫一扫了解更多</span>
+						<img class="img2 ani" swiper-animate-effect="pulse" swiper-animate-duration="0.8s" swiper-animate-delay="2s" src="images/06.png" alt="">
+				  </div>
+	    </div>
+
+	</div>
+
+	<audio src="source/苏运莹 - 野子.mp3" id="music" autoplay></audio>
+	<script src="js/zepto.min.js"></script>
+	<script src="js/touch-0.2.14.min.js"></script>
+	<script type="text/javascript" src="js/swiper-3.3.1.jquery.min.js"></script>
+	<script type="text/javascript" src="js/swiper.animate1.0.2.min.js"></script>
+
 	<script>
-	// $("#btn").click(function(){
-	// 	$.get("/getdata",function(data){
-	// 		console.log(data.name)
-	// 	})
-	// })
-	// $("#btn1").click(function(){
-	// 	$.post("/postdata",{name:"yan"},function(data){
-	// 		console.log('正确')
-	// 	})
-	// })
+		$(function(){
 
-	var btn = document.getElementById('btn')
-	btn.onclick=function(){
-		var xhr=new XMLHttpRequest();
-		xhr.open("get","/get",true);
-		xhr.send();
-		xhr.onreadystatechange=function(){
-			if(xhr.readyState == 4 && xhr.status == 200){
-				console.log(xhr.responseText)
-			}
-		}
-	}
+			//音乐按钮的操作
+				var switchBtn=true; //标记开关状态
+
+				var MUSIC =	document.getElementById('music'); //原生方法获取元素对象
+
+			touch.on('.music-btn','tap',function(e){
+
+				 if(switchBtn==true){
+				 	$('.music-btn').removeClass('music-animate');
+				 	switchBtn=false; //把标记状态的变量设置为 false，代表 关闭状态
+				 	MUSIC.pause();  //音乐关闭
+				 }else{
+				 	$('.music-btn').addClass('music-animate');
+				 	switchBtn=true; //把标记状态的变量设置为 true，代表 开启状态
+				 	MUSIC.play(); //音乐播放
+				 }
+
+				 console.log(switchBtn)
+			});
+		});
+
+
+
+
+
+	  var mySwiper = new Swiper ('.swiper-container', {
+	    direction: 'vertical',
+
+
+	  onInit: function(swiper){ //Swiper2.x的初始化是onFirstInit
+	    swiperAnimateCache(swiper); //隐藏动画元素
+	    swiperAnimate(swiper); //初始化完成开始动画
+	  },
+	  onSlideChangeEnd: function(swiper){
+	    swiperAnimate(swiper); //每个slide切换结束时也运行当前slide动画
+	  }
+
+
+	  })
+
+
 	</script>
 </body>
 </html>
